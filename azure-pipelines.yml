@@ -6,7 +6,7 @@
 trigger:
 - master
 
-pool: Local agents pool
+pool:
   vmImage: ubuntu-latest
 
 steps:
