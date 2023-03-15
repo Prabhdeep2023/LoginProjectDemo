@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const bcrypt = require("bcryptjs");
 var db = require('../database');
 
 router.get("/", (req, res) => {
@@ -25,8 +24,7 @@ router.post("/auth", (req, res) => {
                 return res.render('register', { message: 'This email is already in use' })
             }
     
-            let hashedPassword = await bcrypt.hash(password, 8);
-            db.query('INSERT INTO users SET ?', {name: name, email: email, password: hashedPassword}, (error, results) => {
+            db.query('INSERT INTO users SET ?', {name: name, email: email, password: password}, (error, results) => {
                 if(error) {
                     console.log(error)
                 }

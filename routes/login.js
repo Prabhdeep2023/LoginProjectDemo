@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const bcrypt = require("bcryptjs");
 var db = require('../database');
 
 router.get("/", (req, res) => {
@@ -16,8 +15,8 @@ router.post('/auth', function(request, response) {
       db.query(query, async (error, data) => {
         if (data.length > 0)
         {
-            let passwordMatch = await bcrypt.compare(password, data[0].password);
-            if(passwordMatch)
+            let passwordOriginal = data[0].password;
+            if(password == passwordOriginal)
             {
                 request.session.user_id = data[0].id;
                 request.session.name = data[0].name;

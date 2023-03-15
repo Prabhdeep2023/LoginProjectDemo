@@ -1,5 +1,4 @@
 const express = require('express');
-//const bcrypt = require("bcryptjs");
 var cookieParser = require('cookie-parser');
 var sessions = require('express-session');
 var indexRouter = require('./routes/index');
