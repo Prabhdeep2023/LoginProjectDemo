@@ -3,7 +3,7 @@ const baseURL = "http://localhost:7123"
 const req = request(baseURL);
 
 describe("Units tests", () => {
-
+/* describe tests */
     it("Main page loading check", async () => {
         const res = await req.get("/");
         expect(res.statusCode).toBe(200);
